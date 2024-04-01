@@ -1,0 +1,18 @@
+# should be placed in:
+# /usr/local/lib/systemd/system
+# check paths with:
+# systemd-analyze unit-paths
+
+[Unit]
+Description=UDP Relay Server
+After=network.target
+Wants=network.target
+
+[Service]
+ExecStart=/usr/local/sbin/gamerelayd
+ExecReload=/usr/local/sbin/gamerelayd
+Type=simple
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
